@@ -1,2 +1,2 @@
 # practices
-Small projects with specified functional
+Small projects with some technologies
