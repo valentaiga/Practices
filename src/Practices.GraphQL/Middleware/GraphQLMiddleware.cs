@@ -2,7 +2,7 @@ using System.Text.Json;
 using GraphQL;
 using GraphQL.Types;
 using Microsoft.Extensions.Options;
-using Practices.GraphQL.GraphQL.Models;
+using Practices.GraphQL.GraphQL;
 using Practices.GraphQL.Options;
 
 namespace Practices.GraphQL.Middleware;
@@ -27,25 +27,29 @@ public class GraphQLMiddleware
         if (httpContext.Request.Path.StartsWithSegments(_options.Endpoint) 
             && string.Equals(httpContext.Request.Method, "POST", StringComparison.OrdinalIgnoreCase))
         {
+            var ct = httpContext.RequestAborted;
             var request = await JsonSerializer
                 .DeserializeAsync<GraphQLQuery>(
                     httpContext.Request.Body,
                     new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
-                    });
+                    }, ct);
 
             var result = await _executor
-                .ExecuteAsync(doc =>
+                .ExecuteAsync(options =>
                 {
-                    doc.Schema = schema;
-                    doc.Query = request.Query;
+                    options.Schema = schema;
+                    options.Query = request!.Query;
+                    options.Variables = request.Variables;
+                    options.OperationName = request.OperationName;
+                    options.CancellationToken = ct;
                 }).ConfigureAwait(false);
 
             httpContext.Response.ContentType = "application/json";
             httpContext.Response.StatusCode = 200;
 
-            await _writer.WriteAsync(httpContext.Response.Body, result);
+            await _writer.WriteAsync(httpContext.Response.Body, result, ct);
         }
         else
         {

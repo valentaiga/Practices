@@ -2,5 +2,6 @@ namespace Practices.PostgreSQL;
 
 public class PostgresSettings
 {
-    public string ConnectionString { get; internal set; }
+    // ReSharper disable once UnassignedGetOnlyAutoProperty
+    public string? ConnectionString { get; }
 }

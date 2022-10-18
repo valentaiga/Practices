@@ -1,5 +1,7 @@
 using GraphQL;
-using Practices.GraphQL.GraphQL.Models;
+using Practices.GraphQL.GraphQL.Book;
+using Practices.GraphQL.GraphQL.Book.Mutation;
+using Practices.GraphQL.GraphQL.Book.Query;
 using Practices.GraphQL.Middleware;
 using Practices.GraphQL.Options;
 
@@ -19,13 +21,11 @@ public static class GraphQLMiddlewareExtensions
             .AddSystemTextJson()
             .AddDocumentExecuter<DocumentExecuter>()
             .AddSchema<BookSchema>());
-
-        // builder.Services.AddSingleton<IDocumentWriter, DocumentWriter>();
-        // builder.Services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
-        // builder.Services.AddTransient<ISchema, BookSchema>();
         
         services.AddTransient<BookQuery>();
         services.AddTransient<BookType>();
+        services.AddTransient<BookMutation>();
+        services.AddTransient<BookInputType>();
         
         return services.Configure(action);
     }

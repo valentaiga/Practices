@@ -133,5 +133,15 @@ public sealed class EntitySubscription
 - Stronger type system
 
 ## Environment setup
+Run the project, Altair UI is on https://localhost:5001/ui/altair  
+Available schemas on right side of a screen.
+
+Supported features:
+- [x] Query single book by id parameter
+- [x] Query all books
+- [x] Mutation book create
+- [x] Variables support
+- [ ] Mutate single book (change its fields by id)
 
 ## Project setup
+Restore nuget&run project
