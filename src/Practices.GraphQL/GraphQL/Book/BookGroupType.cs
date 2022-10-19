@@ -2,14 +2,12 @@ using GraphQL;
 using GraphQL.Types;
 using Practices.GraphQL.Services;
 
-namespace Practices.GraphQL.GraphQL.Book.Query;
+namespace Practices.GraphQL.GraphQL.Book;
 
-public sealed class BookQuery : ObjectGraphType
+public sealed class BookGroupType : ObjectGraphType
 {
-    public BookQuery(IBookRepository bookRepository)
+    public BookGroupType(IBookRepository bookRepository)
     {
-        Name = "Query";
-
         Field<BookType>("book")
             .Description("Query a specific book")
             .Argument<NonNullGraphType<IntGraphType>>("id")
@@ -18,9 +16,8 @@ public sealed class BookQuery : ObjectGraphType
                 var id = context.GetArgument<int>("id");
                 return await bookRepository.Get(id);
             });
-        
         Field<ListGraphType<BookType>>("books")
             .Description("Query all books")
-            .ResolveAsync(async context => await bookRepository.GetAll());
+            .ResolveAsync(async _ => await bookRepository.GetAll());
     }
 }

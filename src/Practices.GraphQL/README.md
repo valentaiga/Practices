@@ -96,6 +96,9 @@ var json = await schema.ExecuteAsync(_ =>
 }
 ```
 
+### Complexity Analyzer
+Complexity analyzer prevents malicious queries.
+
 ### Data loader improves Data Fetching and also Ensures Consistency
 On request **Data Loader** tries to get data from **Task Cache** if it is in here, otherwise **Data Loader** fetches data from source and stores it in cache.    
 Data Loader could help in **GraphQL over old REST API** case, when many requests are waiting for each other and these requests can be parallelized and fetched in single response. 
@@ -141,7 +144,25 @@ Supported features:
 - [x] Query all books
 - [x] Mutation book create
 - [x] Variables support
+- [x] Organized schema
+```json
+query {
+  book {
+    books {
+      id
+      description
+    }
+  }
+  author {
+    authors {
+      id
+      name
+    }
+  }
+}
+```
 - [ ] Mutate single book (change its fields by id)
+- [ ] what is GraphTypeMappingProvider?
 
 ## Project setup
 Restore nuget&run project

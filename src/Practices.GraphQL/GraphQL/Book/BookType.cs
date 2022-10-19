@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-namespace Practices.GraphQL.GraphQL.Book.Query;
+namespace Practices.GraphQL.GraphQL.Book;
 
 public sealed class BookType : ObjectGraphType<Book>
 {

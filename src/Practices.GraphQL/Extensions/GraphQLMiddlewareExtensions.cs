@@ -1,7 +1,5 @@
 using GraphQL;
-using Practices.GraphQL.GraphQL.Book;
-using Practices.GraphQL.GraphQL.Book.Mutation;
-using Practices.GraphQL.GraphQL.Book.Query;
+using Practices.GraphQL.GraphQL;
 using Practices.GraphQL.Middleware;
 using Practices.GraphQL.Options;
 
@@ -20,13 +18,15 @@ public static class GraphQLMiddlewareExtensions
         services.AddGraphQL(b => b
             .AddSystemTextJson()
             .AddDocumentExecuter<DocumentExecuter>()
-            .AddSchema<BookSchema>());
-        
-        services.AddTransient<BookQuery>();
-        services.AddTransient<BookType>();
-        services.AddTransient<BookMutation>();
-        services.AddTransient<BookInputType>();
-        
+            .AddGraphTypes()
+            .AddSchema<StoreSchema>()
+            .AddComplexityAnalyzer(opt =>
+            {
+                opt.MaxComplexity = 200;
+                opt.MaxRecursionCount = 1;
+            })
+        );
+
         return services.Configure(action);
     }
 }

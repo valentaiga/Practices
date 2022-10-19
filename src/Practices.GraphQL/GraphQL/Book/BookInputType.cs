@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-namespace Practices.GraphQL.GraphQL.Book.Mutation;
+namespace Practices.GraphQL.GraphQL.Book;
 
 public sealed class BookInputType : InputObjectGraphType
 {
@@ -8,5 +8,6 @@ public sealed class BookInputType : InputObjectGraphType
     {
         Field<NonNullGraphType<StringGraphType>>("description");
         Field<NonNullGraphType<StringGraphType>>("title");
+        Field<NonNullGraphType<IntGraphType>>("authorId");
     }
 }

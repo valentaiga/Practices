@@ -18,6 +18,7 @@ public static class Program
     private static void ConfigureServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddSingleton<IBookRepository, BookRepository>();
+        builder.Services.AddSingleton<IAuthorRepository, AuthorRepository>();
         
         builder.Services.AddGraphQL(options =>
         {
