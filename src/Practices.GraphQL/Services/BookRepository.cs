@@ -19,6 +19,12 @@ public class BookRepository : IBookRepository
         return Task.FromResult(result);
     }
 
+    public Task<IEnumerable<Book>> GetByAuthor(int authorId)
+    {
+        var result = Storage.FindAll(x => x.AuthorId == authorId);
+        return Task.FromResult<IEnumerable<Book>>(result);
+    }
+
     public Task<List<Book>> GetAll()
     {
         return Task.FromResult(Storage);
@@ -43,6 +49,7 @@ public class BookRepository : IBookRepository
 public interface IBookRepository
 {
     Task<Book?> Get(int id);
+    Task<IEnumerable<Book>> GetByAuthor(int authorId);
     Task<List<Book>> GetAll();
     Task<Book> Create(string title, string description, int authorId);
     Task Delete(int id);

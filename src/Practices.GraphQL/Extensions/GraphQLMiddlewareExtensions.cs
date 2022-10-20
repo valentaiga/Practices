@@ -22,7 +22,9 @@ public static class GraphQLMiddlewareExtensions
             .AddSchema<StoreSchema>()
             .AddComplexityAnalyzer(opt =>
             {
+#if !DEBUG
                 opt.MaxComplexity = 200;
+#endif
             })
         );
 

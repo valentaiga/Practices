@@ -27,107 +27,30 @@ Events  | Subscrition | N/A
 - Multiple subscriptions => Multiplexing (WS protocol by GraphQL solved this problem)
 - Throttling => Batching (Mobile/web overflow by events)
 
-### Schema build
+### Schema
 There are two ways you can build your schema: **Schema first approach** using the GraphQL schema language AND the other one is **GraphType** or **Code first approach** by writing GraphType classes.
 
 ### Schema First Approach
-Use the optional GraphQLMetadata attribute to customize the mapping to the schema type.
-```csharp
-public class Query
-{
-  [GraphQLMetadata("hero")]
-  public Droid GetHero()
-  {
-    return new Droid { Id = "1", Name = "R2-D2" };
-  }
-}
+Using GraphQLMetadata to customize the mapping to the schema type.
 
-var json = await schema.ExecuteAsync(_ =>
-{
-  _.Query = "{ hero { id name } }";
-});
-
->>> OUTPUT
-{
-  "data": {
-    "hero": {
-      "id": "1",
-      "name": "R2-D2"
-    }
-  }
-}
-```
 ### GraphType First Approach
-  The GraphType first approach gives you access to all of the provided properties of your GraphType's and Schema.
-```csharp
-public class DroidType : ObjectGraphType<Droid>
-{
-  public DroidType()
-  {
-    Field(x => x.Id).Description("The Id of the Droid.");
-    Field(x => x.Name).Description("The name of the Droid.");
-  }
-}
-
-public class StarWarsQuery : ObjectGraphType
-{
-  public StarWarsQuery()
-  {
-    Field<DroidType>("hero")
-        .Resolve(context => new Droid { Id = "1", Name = "R2-D2" });
-  }
-}
-
-var schema = new Schema { Query = new StarWarsQuery() };
-
-var json = await schema.ExecuteAsync(_ =>
-{
-  _.Query = "{ hero { id name } }";
-});
-
->>> OUTPUT
-{
-  "data": {
-    "hero": {
-      "id": "1",
-      "name": "R2-D2"
-    }
-  }
-}
-```
+The GraphType first approach gives you access to all of the provided properties of your GraphType's and Schema.
 
 ### Complexity Analyzer
 Complexity analyzer prevents malicious queries.
 
-### Data loader improves Data Fetching and also Ensures Consistency
-On request **Data Loader** tries to get data from **Task Cache** if it is in here, otherwise **Data Loader** fetches data from source and stores it in cache.    
-Data Loader could help in **GraphQL over old REST API** case, when many requests are waiting for each other and these requests can be parallelized and fetched in single response. 
+### Data loader
+A DataLoader helps in two ways - **improves data fetching** and **ensures consistency**:
+- Similar operations are batched together. This can make fetching data over a network much more efficient.
+- Fetched values are cached so if they are requested again, the cached value is returned.
  
-### Executor (Subscriptions)
-In cases when consumer wants a data stream, **Executor** could help  
-Event stream => Executor => Resolver => Response stream
-```csharp
-[ExtendObjectType(OperationTypeNames.Subscription)]
-public sealed class EntitySubscription 
-{
-    public async IAsyncEnumerable<int> CreateEntityChangeStream(
-        [Service] IEntityChangeService service, // <-- server which tells us 'which entity changed'
-        [EnumeratorCancellation] CancellationToken ct)
-    {
-        await foreach(var id in service.ReadAsync(ct))
-            yield return id;
-    }
-    
-    [Subscription(with=nameof(CreateEntityChangeStream))] // <-- subscribes to stream
-    public async Task<Entity> OnEntityChangeAsync(
-        EntityByIdDataLoader dataLoader,
-        [EventMessage] int id,
-        CancellationToken ct)
-    => await dataLoader.LoadAsync(id, ct); // <-- Helps to load data efficiently
-    
-    // !!! Add `.AddSubscriptionType()` to GraphQL in Startup.cs
-}
-```
+### Executer (GraphQL .Net)
+DocumentExecuter is a class which executes, validates, analyses the request by specified providers: ISchema, IDocumentBuilder, IDocumentValidator.  
+
+### Subscriptions
+Subscription helps to track any changes by asynchronous data stream.  
+Rough data pipeline on sub: Event stream => Executer => Resolver => Response stream
+
 ## Conclusion
 - GraphQL is evolving at rapid pace
 - More control over data
@@ -145,24 +68,32 @@ Supported features:
 - [x] Mutation book create
 - [x] Variables support
 - [x] Organized schema
-```json
+```
 query {
   book {
     books {
       id
       description
+      author {
+        name
+      }   
     }
   }
   author {
     authors {
       id
       name
+      books {
+        id
+        name
+      }
     }
   }
 }
 ```
 - [ ] Mutate single book (change its fields by id)
-- [ ] what is GraphTypeMappingProvider?
+- [x] Author's books in model (and book's author)
+- [ ] Subscription with book's title update event
 
 ## Project setup
-Restore nuget&run project
+Nothing to declare
