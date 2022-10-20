@@ -23,7 +23,6 @@ public static class GraphQLMiddlewareExtensions
             .AddComplexityAnalyzer(opt =>
             {
                 opt.MaxComplexity = 200;
-                opt.MaxRecursionCount = 1;
             })
         );
 

@@ -43,6 +43,9 @@ public class GraphQLMiddleware
                     options.Query = request!.Query;
                     options.Variables = request.Variables;
                     options.OperationName = request.OperationName;
+                    
+                    options.RequestServices = httpContext.RequestServices;
+                    options.ThrowOnUnhandledException = false;
                     options.CancellationToken = ct;
                 }).ConfigureAwait(false);
 

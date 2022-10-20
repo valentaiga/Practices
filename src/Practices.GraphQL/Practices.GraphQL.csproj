@@ -13,7 +13,6 @@
       <PackageReference Include="GraphQL.Server.Core" Version="5.2.2" />
       <PackageReference Include="GraphQL.Server.Ui.Altair" Version="7.1.1" />
       <PackageReference Include="GraphQL.SystemTextJson" Version="7.1.1" />
-      <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.9" />
     </ItemGroup>
 
 </Project>
