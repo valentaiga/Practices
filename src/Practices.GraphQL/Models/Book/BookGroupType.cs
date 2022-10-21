@@ -2,7 +2,7 @@ using GraphQL;
 using GraphQL.Types;
 using Practices.GraphQL.Services;
 
-namespace Practices.GraphQL.GraphQL.Book;
+namespace Practices.GraphQL.Models.Book;
 
 public sealed class BookGroupType : ObjectGraphType
 {

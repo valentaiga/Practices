@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 using GraphQL;
 using GraphQL.SystemTextJson;
 
-namespace Practices.GraphQL.GraphQL;
+namespace Practices.GraphQL.Models;
 
 public class GraphQLQuery
 {

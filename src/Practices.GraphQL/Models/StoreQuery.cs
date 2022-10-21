@@ -1,8 +1,8 @@
 using GraphQL.Types;
-using Practices.GraphQL.GraphQL.Author;
-using Practices.GraphQL.GraphQL.Book;
+using Practices.GraphQL.Models.Author;
+using Practices.GraphQL.Models.Book;
 
-namespace Practices.GraphQL.GraphQL;
+namespace Practices.GraphQL.Models;
 
 public sealed class StoreQuery : ObjectGraphType
 {

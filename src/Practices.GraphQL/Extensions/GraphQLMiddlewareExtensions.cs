@@ -1,6 +1,6 @@
 using GraphQL;
-using Practices.GraphQL.GraphQL;
 using Practices.GraphQL.Middleware;
+using Practices.GraphQL.Models;
 using Practices.GraphQL.Options;
 
 namespace Practices.GraphQL.Extensions;

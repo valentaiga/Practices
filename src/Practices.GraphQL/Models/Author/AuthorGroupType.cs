@@ -2,7 +2,7 @@ using GraphQL;
 using GraphQL.Types;
 using Practices.GraphQL.Services;
 
-namespace Practices.GraphQL.GraphQL.Author;
+namespace Practices.GraphQL.Models.Author;
 
 public sealed class AuthorGroupType : ObjectGraphType
 {

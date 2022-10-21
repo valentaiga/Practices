@@ -1,10 +1,10 @@
 using GraphQL.Types;
 
-namespace Practices.GraphQL.GraphQL.Book;
+namespace Practices.GraphQL.Models.Book;
 
-public sealed class BookInputType : InputObjectGraphType
+public sealed class BookCreateType : InputObjectGraphType
 {
-    public BookInputType()
+    public BookCreateType()
     {
         Field<NonNullGraphType<StringGraphType>>("description");
         Field<NonNullGraphType<StringGraphType>>("title");

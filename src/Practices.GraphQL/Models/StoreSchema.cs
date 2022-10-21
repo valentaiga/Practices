@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-namespace Practices.GraphQL.GraphQL;
+namespace Practices.GraphQL.Models;
 
 public sealed class StoreSchema : Schema
 {

@@ -1,4 +1,4 @@
-namespace Practices.GraphQL.GraphQL.Author;
+namespace Practices.GraphQL.Models.Author;
 
 public class Author
 {

@@ -1,4 +1,4 @@
-using Practices.GraphQL.GraphQL.Book;
+using Practices.GraphQL.Models.Book;
 
 namespace Practices.GraphQL.Services;
 
@@ -37,6 +37,14 @@ public class BookRepository : IBookRepository
         return Task.FromResult(book);
     }
 
+    public Task<Book> Update(int id, Action<Book> update)
+    {
+        var book = Storage.Find(x => x.Id == id);
+        if (book is null) return Task.FromResult<Book>(null);
+        update(book);
+        return Task.FromResult(book);
+    }
+
     public Task Delete(int id)
     {
         var book = Storage.Find(x => x.Id == id);
@@ -52,5 +60,6 @@ public interface IBookRepository
     Task<IEnumerable<Book>> GetByAuthor(int authorId);
     Task<List<Book>> GetAll();
     Task<Book> Create(string title, string description, int authorId);
+    Task<Book> Update(int id, Action<Book> update);
     Task Delete(int id);
 }

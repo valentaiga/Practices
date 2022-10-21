@@ -91,8 +91,9 @@ query {
   }
 }
 ```
-- [ ] Mutate single book (change its fields by id)
+- [x] Mutate single book/author (change fields by id)
 - [x] Author's books in model (and book's author)
+- [ ] A bit of business logic + graphql exception handler
 - [ ] Subscription with book's title update event
 
 ## Project setup

@@ -1,4 +1,4 @@
-using Practices.GraphQL.GraphQL.Author;
+using Practices.GraphQL.Models.Author;
 
 namespace Practices.GraphQL.Services;
 
@@ -32,6 +32,14 @@ public class AuthorRepository : IAuthorRepository
         return Task.FromResult(author);
     }
 
+    public Task<Author> Update(int id, Action<Author> update)
+    {
+        var author = Storage.Find(x => x.Id == id);
+        if (author is null) return Task.FromResult<Author>(null);
+        update(author);
+        return Task.FromResult(author);
+    }
+
     public Task Delete(int id)
     {
         var author = Storage.Find(x => x.Id == id);
@@ -46,5 +54,6 @@ public interface IAuthorRepository
     Task<Author?> Get(int id);
     Task<List<Author>> GetAll();
     Task<Author> Create(string name);
+    Task<Author> Update(int id, Action<Author> update);
     Task Delete(int id);
 }

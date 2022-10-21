@@ -2,7 +2,7 @@ using System.Text.Json;
 using GraphQL;
 using GraphQL.Types;
 using Microsoft.Extensions.Options;
-using Practices.GraphQL.GraphQL;
+using Practices.GraphQL.Models;
 using Practices.GraphQL.Options;
 
 namespace Practices.GraphQL.Middleware;
@@ -45,7 +45,7 @@ public class GraphQLMiddleware
                     options.OperationName = request.OperationName;
                     
                     options.RequestServices = httpContext.RequestServices;
-                    options.ThrowOnUnhandledException = false;
+                    options.ThrowOnUnhandledException = true;
                     options.CancellationToken = ct;
                 }).ConfigureAwait(false);
 
