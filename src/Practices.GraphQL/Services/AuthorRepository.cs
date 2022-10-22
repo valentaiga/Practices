@@ -4,7 +4,7 @@ namespace Practices.GraphQL.Services;
 
 public class AuthorRepository : IAuthorRepository
 {
-    // since its graphQL only practice, I simplified logic
+    // since its graphQL practice, I simplified logic
     private static int _lastId = 2;
 
     private static readonly List<Author> Storage = new()
@@ -17,6 +17,12 @@ public class AuthorRepository : IAuthorRepository
     public Task<Author?> Get(int id)
     {
         var result = Storage.Find(x => x.Id == id);
+        return Task.FromResult(result);
+    }
+
+    public Task<bool> Exists(int id)
+    {
+        var result = Storage.Exists(x => x.Id == id);
         return Task.FromResult(result);
     }
 
@@ -35,8 +41,7 @@ public class AuthorRepository : IAuthorRepository
     public Task<Author> Update(int id, Action<Author> update)
     {
         var author = Storage.Find(x => x.Id == id);
-        if (author is null) return Task.FromResult<Author>(null);
-        update(author);
+        update.Invoke(author);
         return Task.FromResult(author);
     }
 
@@ -52,6 +57,7 @@ public class AuthorRepository : IAuthorRepository
 public interface IAuthorRepository
 {
     Task<Author?> Get(int id);
+    Task<bool> Exists(int id);
     Task<List<Author>> GetAll();
     Task<Author> Create(string name);
     Task<Author> Update(int id, Action<Author> update);

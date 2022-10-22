@@ -1,8 +1,8 @@
 using GraphQL.Types;
-using Practices.GraphQL.Models.Book;
+using Practices.GraphQL.Models.Book.Query;
 using Practices.GraphQL.Services;
 
-namespace Practices.GraphQL.Models.Author;
+namespace Practices.GraphQL.Models.Author.Query;
 
 public sealed class AuthorType : ObjectGraphType<Author>
 {

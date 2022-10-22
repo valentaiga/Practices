@@ -9,5 +9,6 @@ public sealed class StoreSchema : Schema
     {
         Query = serviceProvider.GetRequiredService<StoreQuery>();
         Mutation = serviceProvider.GetRequiredService<StoreMutation>();
+        Subscription = serviceProvider.GetRequiredService<StoreSubscription>();
     }
 }

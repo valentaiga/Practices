@@ -2,7 +2,7 @@ using GraphQL;
 using GraphQL.Types;
 using Practices.GraphQL.Services;
 
-namespace Practices.GraphQL.Models.Book;
+namespace Practices.GraphQL.Models.Book.Query;
 
 public sealed class BookGroupType : ObjectGraphType
 {
@@ -14,7 +14,10 @@ public sealed class BookGroupType : ObjectGraphType
             .ResolveAsync(async context =>
             {
                 var id = context.GetArgument<int>("id");
-                return await bookRepository.Get(id);
+                var book = await bookRepository.Get(id);
+                if (book is null) 
+                    throw new ExecutionError("Invalid book id");
+                return book;
             });
         Field<ListGraphType<BookType>>("books")
             .Description("Query all books")

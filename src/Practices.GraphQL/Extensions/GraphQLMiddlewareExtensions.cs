@@ -1,7 +1,7 @@
 using GraphQL;
 using Practices.GraphQL.Middleware;
 using Practices.GraphQL.Models;
-using Practices.GraphQL.Options;
+using GraphQLOptions = Practices.GraphQL.Options.GraphQLOptions;
 
 namespace Practices.GraphQL.Extensions;
 
@@ -9,6 +9,7 @@ public static class GraphQLMiddlewareExtensions
 {
     public static IApplicationBuilder UseGraphQL(this IApplicationBuilder builder)
     {
+        builder.UseWebSockets();
         builder.UseGraphQLAltair();
         return builder.UseMiddleware<GraphQLMiddleware>();
     }
@@ -27,7 +28,7 @@ public static class GraphQLMiddlewareExtensions
 #endif
             })
         );
-
+        
         return services.Configure(action);
     }
 }

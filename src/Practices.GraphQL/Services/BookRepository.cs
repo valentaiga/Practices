@@ -4,7 +4,7 @@ namespace Practices.GraphQL.Services;
 
 public class BookRepository : IBookRepository
 {
-    // since its graphQL only practice, I simplified logic
+    // since its graphQL practice, I simplified logic
     private static int _lastId = 3;
     private static readonly List<Book> Storage = new()
     {
@@ -12,10 +12,26 @@ public class BookRepository : IBookRepository
         new Book(2, "History of Germany II", "Historical Book about Germany. Tome II", 1, DateTime.UtcNow.AddDays(-3)),
         new Book(3, "History of Germany III", "Historical Book about Germany. Tome III", 1, DateTime.UtcNow.AddDays(-1)),
     };
+
+    public BookRepository()
+    {
+    }
     
     public Task<Book?> Get(int id)
     {
         var result = Storage.Find(x => x.Id == id);
+        return Task.FromResult(result);
+    }
+
+    public Task<bool> Exists(int id)
+    {
+        var result = Storage.Exists(x => x.Id == id);
+        return Task.FromResult(result);
+    }
+
+    public Task<bool> ExistsByAuthor(int authorId)
+    {
+        var result = Storage.Exists(x => x.AuthorId == authorId);
         return Task.FromResult(result);
     }
 
@@ -40,9 +56,15 @@ public class BookRepository : IBookRepository
     public Task<Book> Update(int id, Action<Book> update)
     {
         var book = Storage.Find(x => x.Id == id);
-        if (book is null) return Task.FromResult<Book>(null);
-        update(book);
+        update.Invoke(book);
         return Task.FromResult(book);
+    }
+
+    public async Task<Book> Update(int id, Func<Book, Task> update)
+    {
+        var book = Storage.Find(x => x.Id == id);
+        await update.Invoke(book);
+        return book;
     }
 
     public Task Delete(int id)
@@ -57,9 +79,12 @@ public class BookRepository : IBookRepository
 public interface IBookRepository
 {
     Task<Book?> Get(int id);
+    Task<bool> Exists(int id);
+    Task<bool> ExistsByAuthor(int authorId);
     Task<IEnumerable<Book>> GetByAuthor(int authorId);
     Task<List<Book>> GetAll();
     Task<Book> Create(string title, string description, int authorId);
     Task<Book> Update(int id, Action<Book> update);
+    Task<Book> Update(int id, Func<Book, Task> update);
     Task Delete(int id);
 }

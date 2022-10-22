@@ -1,6 +1,6 @@
 using GraphQL.Types;
-using Practices.GraphQL.Models.Author;
-using Practices.GraphQL.Models.Book;
+using Practices.GraphQL.Models.Author.Mutation;
+using Practices.GraphQL.Models.Book.Mutation;
 
 namespace Practices.GraphQL.Models;
 

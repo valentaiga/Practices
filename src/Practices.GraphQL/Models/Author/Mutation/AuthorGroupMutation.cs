@@ -1,12 +1,13 @@
 using GraphQL;
 using GraphQL.Types;
+using Practices.GraphQL.Models.Author.Query;
 using Practices.GraphQL.Services;
 
-namespace Practices.GraphQL.Models.Author;
+namespace Practices.GraphQL.Models.Author.Mutation;
 
 public sealed class AuthorGroupMutation : ObjectGraphType
 {
-    public AuthorGroupMutation(IAuthorRepository authorRepository)
+    public AuthorGroupMutation(IAuthorRepository authorRepository, IBookRepository bookRepository)
     {
         Field<AuthorType>("create")
             .Description("Create author")
@@ -25,6 +26,8 @@ public sealed class AuthorGroupMutation : ObjectGraphType
                 var authorInput = ctx.GetArgument<Author>("author");
                 return await authorRepository.Update(authorInput.Id, author =>
                 {
+                    if (authorInput is null) 
+                        throw new ExecutionError("Invalid author id");
                     if (!string.IsNullOrEmpty(authorInput.Name)) author.Name = authorInput.Name;
                 });
             });
@@ -35,6 +38,10 @@ public sealed class AuthorGroupMutation : ObjectGraphType
             .ResolveAsync(async context =>
             {
                 var id = context.GetArgument<int>("id");
+                if (!await authorRepository.Exists(id)) 
+                    throw new ExecutionError("Invalid author id");
+                if (await bookRepository.ExistsByAuthor(id))
+                    throw new ExecutionError("Author has books. Cannot be deleted");
                 await authorRepository.Delete(id);
                 return true;
             });

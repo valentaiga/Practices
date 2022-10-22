@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-namespace Practices.GraphQL.Models.Author;
+namespace Practices.GraphQL.Models.Author.Mutation;
 
 public sealed class AuthorCreateType: InputObjectGraphType
 {

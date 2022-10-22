@@ -31,7 +31,8 @@ public static class Program
             {
                 services.AddSingleton<IBookRepository, BookRepository>();
                 services.AddSingleton<IAuthorRepository, AuthorRepository>();
-
+                services.AddSingleton<IBookEventService, BookEventService>();
+                
                 services.AddGraphQL(options =>
                 {
                     options.Endpoint = "/graphql";

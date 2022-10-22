@@ -93,8 +93,9 @@ query {
 ```
 - [x] Mutate single book/author (change fields by id)
 - [x] Author's books in model (and book's author)
-- [ ] A bit of business logic + graphql exception handler
-- [ ] Subscription with book's title update event
+- [x] A bit of business logic + graphql exception handler
+- [x] Subscription with book's title update event
+- [ ] GraphQL Client based on schema (not necessary but why not)
 
 ## Project setup
 Nothing to declare

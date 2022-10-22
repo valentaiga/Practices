@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-namespace Practices.GraphQL.Models.Book;
+namespace Practices.GraphQL.Models.Book.Mutation;
 
 public sealed class BookCreateType : InputObjectGraphType
 {
