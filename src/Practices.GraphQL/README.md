@@ -1,8 +1,30 @@
-# GraphQL 
-Project includes WebApi with GraphQL over it
+# GraphQL
+Project includes GraphQL wrapper over .Net classes.  
+Models are not splitted to dbo or api becouse this is not a project goal.
 
 ## Goals
- - [x] Build GraphQL project and understand the meaning of mandatory GraphQL over .Net classes
+- [x] Build GraphQL project and understand the meaning of mandatory GraphQL over .Net classes
+- [x] Query single book by id parameter
+- [x] Query all books
+- [x] Mutation book create
+- [x] Variables support
+- [x] Organized schema
+- [x] Mutate single book/author (change fields by id)
+- [x] Author's books in model (and book's author)
+- [x] A bit of business logic + graphql exception handler
+- [x] Subscription with book's title update event
+- [ ] Add DataLoader logic
+- [ ] GraphQL Client based on schema (not necessary but why not)
+
+## Environment setup
+Run the project, Altair UI is on https://localhost:5001/ui/altair  
+Available schemas on right side of a screen.
+
+Supported features:
+
+
+## Project setup
+Nothing to declare
 
 ## Theory
 ### GraphQL is a query language for API
@@ -43,9 +65,9 @@ Complexity analyzer prevents malicious queries.
 A DataLoader helps in two ways - **improves data fetching** and **ensures consistency**:
 - Similar operations are batched together. This can make fetching data over a network much more efficient.
 - Fetched values are cached so if they are requested again, the cached value is returned.
- 
+
 ### Executer (GraphQL .Net)
-DocumentExecuter is a class which executes, validates, analyses the request by specified providers: ISchema, IDocumentBuilder, IDocumentValidator.  
+DocumentExecuter is a class which executes, validates, analyses the request by specified providers: ISchema, IDocumentBuilder, IDocumentValidator.
 
 ### Subscriptions
 Subscription helps to track any changes by asynchronous data stream.  
@@ -57,45 +79,3 @@ Rough data pipeline on sub: Event stream => Executer => Resolver => Response str
   - Error boundaries => data quality
   - @defer/@stream => prioritisation
 - Stronger type system
-
-## Environment setup
-Run the project, Altair UI is on https://localhost:5001/ui/altair  
-Available schemas on right side of a screen.
-
-Supported features:
-- [x] Query single book by id parameter
-- [x] Query all books
-- [x] Mutation book create
-- [x] Variables support
-- [x] Organized schema
-```
-query {
-  book {
-    books {
-      id
-      description
-      author {
-        name
-      }   
-    }
-  }
-  author {
-    authors {
-      id
-      name
-      books {
-        id
-        name
-      }
-    }
-  }
-}
-```
-- [x] Mutate single book/author (change fields by id)
-- [x] Author's books in model (and book's author)
-- [x] A bit of business logic + graphql exception handler
-- [x] Subscription with book's title update event
-- [ ] GraphQL Client based on schema (not necessary but why not)
-
-## Project setup
-Nothing to declare
