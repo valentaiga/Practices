@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -7,6 +7,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practices.GraphQL", "src\Practices.GraphQL\Practices.GraphQL.csproj", "{A210F212-D317-4BA3-A9B8-73E8838423C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practices.FluentMigration", "src\Practices.FluentMigration\Practices.FluentMigration.csproj", "{6EA938EF-2770-4A6C-B57A-3BDCCE8ABE18}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E6A12FA0-DBD6-4925-AF2D-B03C5159F63A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practices.gRPC", "Practices.gRPC", "{F5C5F6C4-A279-4B6A-BB82-D110B391E32A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "src\Practices.gRPC\Server\Server.csproj", "{BDA77390-A7EA-4BB2-B1E7-262BFE4E3B0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,11 +32,19 @@ Global
 		{6EA938EF-2770-4A6C-B57A-3BDCCE8ABE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EA938EF-2770-4A6C-B57A-3BDCCE8ABE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EA938EF-2770-4A6C-B57A-3BDCCE8ABE18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA77390-A7EA-4BB2-B1E7-262BFE4E3B0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA77390-A7EA-4BB2-B1E7-262BFE4E3B0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA77390-A7EA-4BB2-B1E7-262BFE4E3B0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA77390-A7EA-4BB2-B1E7-262BFE4E3B0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C42D0E20-D335-4B87-B207-A63A83D6FE8D}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5C5F6C4-A279-4B6A-BB82-D110B391E32A} = {E6A12FA0-DBD6-4925-AF2D-B03C5159F63A}
+		{BDA77390-A7EA-4BB2-B1E7-262BFE4E3B0D} = {F5C5F6C4-A279-4B6A-BB82-D110B391E32A}
 	EndGlobalSection
 EndGlobal

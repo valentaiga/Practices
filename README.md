@@ -5,6 +5,7 @@ Pet projects with theory.
 - [x] [GraphQL Server](src/Practices.GraphQL)
 - [x] [FluentMigration](src/Practices.FluentMigration)
 - [x] [PostgreSQL + Dapper ORM](src/Practices.PostgreSQL)
+- [ ] [Machine Learning](src/Practices.ML.Net)
 - [ ] [gRPC](src/Practices.gRPC)
 - [ ] [Polly]()
 - [ ] [XUnit]()
@@ -14,7 +15,7 @@ Pet projects with theory.
 - [ ] [MiniProfiler]()
  
 ## Theory
-- [ ] [GC]()
+- [ ] [.NET under the hood](docs/dotnet.md)
 - [x] [Apache Kafka](docs/Kafka.md)
 - [x] [GoF](docs/patterns.md) & [SOLID](docs/patterns.md#SOLID)
 - [ ] [API design patterns]()
