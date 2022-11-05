@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practices.gRPC", "Practices
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "src\Practices.gRPC\Server\Server.csproj", "{BDA77390-A7EA-4BB2-B1E7-262BFE4E3B0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Builder", "src\Practices.ML.Net\Data.Builder\Data.Builder.csproj", "{30030C88-02A3-4445-92B6-3142EB4BB052}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repository", "src\Practices.ML.Net\Data.Repository\Data.Repository.csproj", "{7CA2374F-C11D-4008-985E-B5386D385D92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +40,14 @@ Global
 		{BDA77390-A7EA-4BB2-B1E7-262BFE4E3B0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDA77390-A7EA-4BB2-B1E7-262BFE4E3B0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDA77390-A7EA-4BB2-B1E7-262BFE4E3B0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30030C88-02A3-4445-92B6-3142EB4BB052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30030C88-02A3-4445-92B6-3142EB4BB052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30030C88-02A3-4445-92B6-3142EB4BB052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30030C88-02A3-4445-92B6-3142EB4BB052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CA2374F-C11D-4008-985E-B5386D385D92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CA2374F-C11D-4008-985E-B5386D385D92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CA2374F-C11D-4008-985E-B5386D385D92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CA2374F-C11D-4008-985E-B5386D385D92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
