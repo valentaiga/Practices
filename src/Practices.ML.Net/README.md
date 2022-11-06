@@ -18,6 +18,18 @@
 - PostgreSQL
 - Dapper ORM
 
+## Theory
+![ml_01](../../docs/img/ml_01.png)
+
+### How to improve model
+- provide more testing data
+- filter missing values and outliers
+- select different features OR add more features
+- choose a different algorithm
+- tune algorithm hyperparameters
+- cross-validation
+
+
 ## Environment setup
 If you need a local database follow instruction below:
 Pull&Run PostgreSQL image in docker: `docker run --name postgres-db -e POSTGRES_PASSWORD=admin -p 5432:5432 -d postgres`
@@ -27,3 +39,7 @@ Pull&Run PostgreSQL image in docker: `docker run --name postgres-db -e POSTGRES_
 ## Helpful Links
 - [Free datasets for data science](https://www.kaggle.com/)
 - [QuickStart: ML.NET Model Builder](https://youtu.be/cUqNzZwzUV0)
+- [.NET - Machine Learning](https://youtu.be/sBHRd6e5ZBY)
+- [RU: ML starter roadmap](https://dou.ua/lenta/columns/study-data-science-and-ml/)
+  - [RU: Linear Algebra course](https://youtu.be/CpO7mQZAX7M)
+  - [Supervised Machine Learning: Regression and Classification](https://www.coursera.org/learn/machine-learning?action=enroll)

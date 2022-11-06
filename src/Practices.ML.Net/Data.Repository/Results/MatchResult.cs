@@ -1,5 +1,3 @@
-using Data.Repository.Models;
-
 namespace Data.Repository.Results;
 
 public record MatchResult(

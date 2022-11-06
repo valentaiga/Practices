@@ -3,11 +3,11 @@ using Data.Repository.Results;
 
 namespace Data.Repository.Services;
 
-public class MatchRepository : IMatchRepository
+internal class MatchRepository : IMatchRepository
 {
     private readonly IInternalMatchRepository _repo;
 
-    internal MatchRepository(IInternalMatchRepository repo)
+    public MatchRepository(IInternalMatchRepository repo)
     {
         _repo = repo;
     }
