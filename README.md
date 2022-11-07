@@ -16,6 +16,7 @@ Pet projects with theory.
  
 ## Theory
 - [ ] [.NET under the hood](docs/dotnet.md)
+- [x] [Mediator .Net](docs/mediator.md)
 - [x] [Apache Kafka](docs/Kafka.md)
 - [x] [GoF](docs/patterns.md) & [SOLID](docs/patterns.md#SOLID)
 - [ ] [API design patterns]()
