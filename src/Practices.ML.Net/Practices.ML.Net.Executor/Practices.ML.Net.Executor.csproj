@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Practices.ML.Net.Executor</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Practices.ML.Net.Predictor\Practices.ML.Net.Predictor.csproj" />
+      <ProjectReference Include="..\Practices.ML.Net.Repository\Practices.ML.Net.Repository.csproj" />
+      <ProjectReference Include="..\Practices.ML.Net.Scraper\Practices.ML.Net.Scraper.csproj" />
+    </ItemGroup>
+
+</Project>

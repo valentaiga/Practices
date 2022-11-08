@@ -14,13 +14,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practices.gRPC", "Practices
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "src\Practices.gRPC\Server\Server.csproj", "{BDA77390-A7EA-4BB2-B1E7-262BFE4E3B0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Builder", "src\Practices.ML.Net\Data.Builder\Data.Builder.csproj", "{30030C88-02A3-4445-92B6-3142EB4BB052}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practices.ML.Net.Predictor", "src\Practices.ML.Net\Practices.ML.Net.Predictor\Practices.ML.Net.Predictor.csproj", "{30030C88-02A3-4445-92B6-3142EB4BB052}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repository", "src\Practices.ML.Net\Data.Repository\Data.Repository.csproj", "{7CA2374F-C11D-4008-985E-B5386D385D92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practices.ML.Net.Repository", "src\Practices.ML.Net\Practices.ML.Net.Repository\Practices.ML.Net.Repository.csproj", "{7CA2374F-C11D-4008-985E-B5386D385D92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Scrapper", "src\Practices.ML.Net\Data.Scrapper\Data.Scrapper.csproj", "{2907E8F0-800C-4FC3-B794-6CB775A28552}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practices.ML.Net.Scraper", "src\Practices.ML.Net\Practices.ML.Net.Scraper\Practices.ML.Net.Scraper.csproj", "{2907E8F0-800C-4FC3-B794-6CB775A28552}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Executor", "src\Practices.ML.Net\Executor\Executor.csproj", "{E731578C-9BF0-4710-9A4B-981B8C6923B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practices.ML.Net.Executor", "src\Practices.ML.Net\Practices.ML.Net.Executor\Practices.ML.Net.Executor.csproj", "{E731578C-9BF0-4710-9A4B-981B8C6923B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practices.ML.Net.Abstractions", "src\Practices.ML.Net\Practices.ML.Net.Abstractions\Practices.ML.Net.Abstractions.csproj", "{689B6B61-7F7E-4723-858F-76D8580A382D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +62,10 @@ Global
 		{E731578C-9BF0-4710-9A4B-981B8C6923B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E731578C-9BF0-4710-9A4B-981B8C6923B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E731578C-9BF0-4710-9A4B-981B8C6923B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{689B6B61-7F7E-4723-858F-76D8580A382D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{689B6B61-7F7E-4723-858F-76D8580A382D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{689B6B61-7F7E-4723-858F-76D8580A382D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{689B6B61-7F7E-4723-858F-76D8580A382D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
