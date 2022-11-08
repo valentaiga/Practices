@@ -1,6 +1,5 @@
 using Practices.ML.Net.Abstractions.Models;
 using Practices.ML.Net.Repository.Models;
-using Practices.ML.Net.Repository.Results;
 
 namespace Practices.ML.Net.Repository.Services;
 
@@ -22,11 +21,13 @@ internal class MatchRepository : IMatchRepository
         await _repo.AddMatch(dbMatch);
     }
 
-    public async Task<GetMatchesResult> GetMatches(DateTime from, DateTime to)
+    public async IAsyncEnumerable<GameMatch> GetMatches(DateTime from, DateTime to)
     {
         var dbMatches = await _repo.GetMatches(from, to);
-        var matches = dbMatches.Select(ToModel).ToList();
-        return new GetMatchesResult(matches);
+        foreach (var dbMatch in dbMatches)
+        {
+            yield return ToModel(dbMatch);
+        }
     }
 
     public Task<bool> MatchesFetched(int year, int rating)
@@ -88,7 +89,7 @@ internal class MatchRepository : IMatchRepository
 
 public interface IMatchRepository
 {
-    Task<GetMatchesResult> GetMatches(DateTime from, DateTime to);
+    IAsyncEnumerable<GameMatch> GetMatches(DateTime from, DateTime to);
     Task AddIfNotExists(GameMatch gameMatch);
     Task<bool> MatchesFetched(int year, int rating);
     Task AddMatchesFetch(int year, int rating);

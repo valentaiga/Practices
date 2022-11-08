@@ -19,9 +19,10 @@ try
 {
     // just test the code
     var service = app.Services.GetRequiredService<IMatchService>();
-    foreach (var rating in Enum.GetValues<MatchRating>())
+    foreach (var rating in Enum.GetValues<MatchRating>().Reverse())
     {
-        await service.GetMatches(2020, rating);  
+        var matches = await service.GetMatches(2020, rating).ToArrayAsync();
+        Console.WriteLine($"fetched {matches.Length} matches ({(int)rating} rating)");
     }
 }
 catch (Exception e)

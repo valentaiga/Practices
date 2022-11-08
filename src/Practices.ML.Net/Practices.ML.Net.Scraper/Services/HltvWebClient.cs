@@ -12,20 +12,15 @@ internal class HltvWebClient : WebClientBase, IHltvWebClient
         _parser = parser;
     }
     
-    public async Task<IReadOnlyList<GameMatch>> GetMatches(DateTime from, DateTime to, MatchRating rating)
+    public async IAsyncEnumerable<GameMatch> GetMatches(DateTime from, DateTime to, MatchRating rating)
     {
-        var result = new List<GameMatch>(100);
-        
-        var matchUrls = await GetMatchInfoUrls(from, to, rating);
-        foreach (var url in matchUrls)
+        await foreach (var url in GetMatchInfoUrls(from, to, rating))
         {
             var parseResult = await GetMatchInfo(url);
-            result.Add(parseResult);
+            yield return parseResult;
             Console.WriteLine($"Match ({parseResult.Id} {parseResult.T1} vs {parseResult.T2}) fetched");
             await Task.Delay(TimeSpan.FromSeconds(2));
         }
-        
-        return result;
     }
 
     private async Task<GameMatch> GetMatchInfo(string matchUrl)
@@ -43,33 +38,29 @@ internal class HltvWebClient : WebClientBase, IHltvWebClient
         }
     }
 
-    private async Task<List<string>> GetMatchInfoUrls(DateTime from, DateTime to, MatchRating rating)
+    private async IAsyncEnumerable<string> GetMatchInfoUrls(DateTime from, DateTime to, MatchRating rating)
     {
         var relativeUrl = string.Empty;
         var offset = 0;
 
-        var results = new List<string>(100);
-
-        var finishFetch = false;
-
-        while (!finishFetch)
+        while (true)
         {
             UpdateUrl();
             var response = await HttpClient.GetAsync(relativeUrl);
             EnsureSuccessResponse(response);
-            await using var stream = await response.Content.ReadAsStreamAsync(); 
+            await using var stream = await response.Content.ReadAsStreamAsync();
             var parseResult = _parser.ParseMatches(stream);
-            results.AddRange(parseResult);
+            foreach (var url in parseResult)
+            {
+                yield return url;
+            }
             offset += parseResult.Length;
-            finishFetch = parseResult.Length != 100;
             Console.WriteLine($"Fetched '{relativeUrl}'");
+            if (parseResult.Length != 100)
+                break;
             await Task.Delay(TimeSpan.FromSeconds(2));
         }
 
-        Console.WriteLine($"Matches fetched Total:{results.Count}");
-
-        return results;
-        
         void UpdateUrl() => 
             relativeUrl = $"/results?startDate={from:yyyy-MM-dd}&endDate={to:yyyy-MM-dd}&stars={(int)rating}&offset={offset}";
     }
@@ -77,5 +68,5 @@ internal class HltvWebClient : WebClientBase, IHltvWebClient
 
 public interface IHltvWebClient
 {
-    Task<IReadOnlyList<GameMatch>> GetMatches(DateTime from, DateTime to, MatchRating rating);
+    IAsyncEnumerable<GameMatch> GetMatches(DateTime from, DateTime to, MatchRating rating);
 }

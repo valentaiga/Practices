@@ -21,7 +21,7 @@ public class MatchService : IMatchService
         _tableCreator = tableCreator;
     }
 
-    public async Task<IReadOnlyList<GameMatch>> GetMatches(int year, MatchRating rating)
+    public async IAsyncEnumerable<GameMatch> GetMatches(int year, MatchRating rating)
     {
         await _tableCreator.CreateIfNotExist();
         var fetched = await _matchRepository.MatchesFetched(year, (int)rating);
@@ -29,34 +29,34 @@ public class MatchService : IMatchService
         {
             var from = new DateTime(year, 1, 1);
             var to = new DateTime(year + 1, 1, 1).AddDays(-1);
-            var result = await _matchRepository.GetMatches(from, to);
-            return result.Matches;
+            await foreach (var match in _matchRepository.GetMatches(from, to))
+            {
+                yield return match;
+            }
+
+            yield break;
         }
 
-        var matches = await ScrapMatches(year, rating);
-        await SaveMatches(matches);
+        await foreach (var match in ScrapMatches(year, rating))
+        {
+            await _matchRepository.AddIfNotExists(match);
+            yield return match;
+        }
         await _matchRepository.AddMatchesFetch(year, (int)rating);
-        return matches;
     }
 
-    private async Task<IReadOnlyList<GameMatch>> ScrapMatches(int year, MatchRating rating)
+    private async IAsyncEnumerable<GameMatch> ScrapMatches(int year, MatchRating rating)
     {
         var from = new DateTime(year, 1, 1);
         var to = new DateTime(year + 1, 1, 1).AddDays(-1);
-        var result = await _hltvWebClient.GetMatches(from, to, rating);
-        return result;
-    }
-
-    private async Task SaveMatches(IReadOnlyList<GameMatch> matches)
-    {
-        foreach (var match in matches)
+        await foreach (var match in _hltvWebClient.GetMatches(from, to, rating))
         {
-            await _matchRepository.AddIfNotExists(match);
+            yield return match;
         }
     }
 }
 
 public interface IMatchService
 {
-    Task<IReadOnlyList<GameMatch>> GetMatches(int year, MatchRating rating);
+    IAsyncEnumerable<GameMatch> GetMatches(int year, MatchRating rating);
 }

@@ -62,7 +62,7 @@ create table matches (
 
         const string createFetches = @"
 create table fetches (
-    year INT PRIMARY KEY,
+    year INT,
     rating SMALLINT
 )";
         await using var connection = new NpgsqlConnection(_connectionString);
@@ -79,7 +79,7 @@ select exists (
     limit 1
     )";
         await using var connection = new NpgsqlConnection(_connectionString);
-        return await connection.QuerySingleAsync<bool>(q, new { tableName });
+        return await connection.ExecuteScalarAsync<bool>(q, new { tableName });
     }
 }
 
