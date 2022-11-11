@@ -2,7 +2,6 @@
 using Practices.ML.Net.Predictor;
 using Practices.ML.Net.Repository;
 using Practices.ML.Net.Scraper;
-using Practices.ML.Net.Scraper.Models;
 
 var builder = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
@@ -11,6 +10,10 @@ var builder = Host.CreateDefaultBuilder(args)
         services.AddRepository();
         services.AddMLServices();
         services.AddSingleton<IMatchService, MatchService>();
+        services.AddLogging(builder => builder
+            .AddConsole()
+            .AddSystemdConsole()
+            .SetMinimumLevel(LogLevel.Debug));
     });
 
 var app = builder.Build();
@@ -19,11 +22,12 @@ try
 {
     // just test the code
     var service = app.Services.GetRequiredService<IMatchService>();
-    foreach (var rating in Enum.GetValues<MatchRating>().Reverse())
-    {
-        var matches = await service.GetMatches(2020, rating).ToArrayAsync();
-        Console.WriteLine($"fetched {matches.Length} matches ({(int)rating} rating)");
-    }
+
+    await service.CheckProbability();
+    // foreach (var rating in Enum.GetValues<MatchRating>().Reverse())
+    // {
+    //     await service.GetMatches(2022, rating).ToArrayAsync();
+    // }
 }
 catch (Exception e)
 {

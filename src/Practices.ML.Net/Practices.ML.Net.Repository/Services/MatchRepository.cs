@@ -1,4 +1,5 @@
 using Practices.ML.Net.Abstractions.Models;
+using Practices.ML.Net.Abstractions.Repository;
 using Practices.ML.Net.Repository.Models;
 
 namespace Practices.ML.Net.Repository.Services;
@@ -30,11 +31,14 @@ internal class MatchRepository : IMatchRepository
         }
     }
 
-    public Task<bool> MatchesFetched(int year, int rating)
-        => _repo.IsFetched(year, rating);
+    public Task<bool> IsMatchExists(int id)
+        => _repo.MatchExists(id);
 
-    public Task AddMatchesFetch(int year, int rating)
-        => _repo.AddMatchesFetch(year, rating);
+    public Task<bool> MatchesFetched(int year, MatchRating rating)
+        => _repo.IsFetched(year, (int)rating);
+
+    public Task AddMatchesFetch(int year, MatchRating rating)
+        => _repo.AddMatchesFetch(year, (int)rating);
     
     private static DbMatch ToDb(GameMatch m)
     {
@@ -85,12 +89,4 @@ internal class MatchRepository : IMatchRepository
                 m.Player9,
                 m.Player10,
             });
-}
-
-public interface IMatchRepository
-{
-    IAsyncEnumerable<GameMatch> GetMatches(DateTime from, DateTime to);
-    Task AddIfNotExists(GameMatch gameMatch);
-    Task<bool> MatchesFetched(int year, int rating);
-    Task AddMatchesFetch(int year, int rating);
 }

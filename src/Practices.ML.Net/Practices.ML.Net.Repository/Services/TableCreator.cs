@@ -1,5 +1,6 @@
 using Dapper;
 using Npgsql;
+using Practices.ML.Net.Abstractions.Repository;
 using Practices.ML.Net.Abstractions.Settings;
 
 namespace Practices.ML.Net.Repository.Services;
@@ -19,7 +20,11 @@ public class TableCreator : ITableCreator
     public async Task CreateIfNotExist()
     {
         await _locker.WaitAsync();
-        if (_created) return;
+        if (_created)
+        {
+            _locker.Release();
+            return;
+        }
         await CreateMatchesTable();
         await CreateFetchesTable();
         _created = true;
@@ -81,9 +86,4 @@ select exists (
         await using var connection = new NpgsqlConnection(_connectionString);
         return await connection.ExecuteScalarAsync<bool>(q, new { tableName });
     }
-}
-
-public interface ITableCreator
-{
-    Task CreateIfNotExist();
 }

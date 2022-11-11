@@ -1,4 +1,4 @@
-namespace Practices.ML.Net.Scraper.Models;
+namespace Practices.ML.Net.Abstractions.Models;
 
 public enum MatchRating
 {

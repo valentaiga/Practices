@@ -5,7 +5,7 @@ Pet projects with theory.
 - [x] [GraphQL Server](src/Practices.GraphQL)
 - [x] [FluentMigration](src/Practices.FluentMigration)
 - [x] [PostgreSQL + Dapper ORM](src/Practices.PostgreSQL)
-- [ ] [Machine Learning](src/Practices.ML.Net)
+- [ ] [~~Machine Learning~~](src/Practices.ML.Net) _(Too complicated)_
 - [ ] [gRPC](src/Practices.gRPC)
 - [ ] [Polly]()
 - [ ] [XUnit]()
@@ -19,6 +19,7 @@ Pet projects with theory.
 - [x] [Mediator .Net](docs/mediator.md)
 - [x] [Apache Kafka](docs/Kafka.md)
 - [x] [GoF](docs/patterns.md) & [SOLID](docs/patterns.md#SOLID)
+- [ ] [JWT]()
 - [ ] [API design patterns]()
 - [ ] [Microservices patterns]() // vod: https://www.youtube.com/watch?v=FF-GZ7iipwc
 - [ ] [K6 Stress testing]() // vod: https://youtu.be/iu6X4QNgFig?list=LL

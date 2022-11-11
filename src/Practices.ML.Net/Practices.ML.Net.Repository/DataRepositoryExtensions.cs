@@ -1,3 +1,4 @@
+using Practices.ML.Net.Abstractions.Repository;
 using Practices.ML.Net.Repository.Services;
 
 namespace Practices.ML.Net.Repository;

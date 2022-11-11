@@ -8,12 +8,12 @@ namespace Practices.ML.Net.Repository.Services;
 
 internal class InternalRepository : IInternalRepository
 {
+    private readonly ILogger<InternalRepository> _logger;
     private readonly string _connectionString;
 
-    public InternalRepository()
+    public InternalRepository(ILogger<InternalRepository> logger)
     {
-        // todo: import with options from appSettings.json
-        // if doesnt work - check https://www.connectionstrings.com/postgresql/
+        _logger = logger;
         _connectionString = GlobalSettings.PostgresConnectionString;
     }
 
@@ -65,6 +65,7 @@ values (@Id,
     @player10)";
         await using var conn = new NpgsqlConnection(_connectionString);
         await conn.ExecuteAsync(q, dbMatch);
+        _logger.LogDebug("Match {matchId} successfully added to db", dbMatch.Id);
     }
 
     public async Task<bool> IsFetched(int year, int rating)
@@ -86,6 +87,7 @@ insert into fetches
 values (@year, @rating)";
         await using var conn = new NpgsqlConnection(_connectionString);
         await conn.ExecuteAsync(q, new { year, rating });
+        _logger.LogDebug("Matches fetch log for {year} with {rating} rating successfully added to db", year, rating);
     }
 }
 

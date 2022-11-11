@@ -28,4 +28,7 @@ public abstract class WebClientBase
         if (!response.IsSuccessStatusCode)
             throw new Exception($"Response is not success. Reason: {response.ReasonPhrase}");
     }
+
+    protected string GetFullUrl(string relativeUrl)
+        => Path.Combine(HttpClient.BaseAddress!.AbsoluteUri, relativeUrl);
 }
