@@ -4,7 +4,7 @@
 ## Goals
 - [x] Create gRPC schema 
 - [x] Make gRPC server
-- [ ] Make gRPC client
+- [x] Make gRPC client
 - [ ] Configure Polly to gRPC
 - [ ] Add metrics to gRPC services (anything)
 
