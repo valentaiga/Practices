@@ -2,14 +2,29 @@
 **!!! Schema first** 
 
 ## Goals
-- [ ] Create gRPC schema 
-- [ ] Make gRPC server
+- [x] Create gRPC schema 
+- [x] Make gRPC server
 - [ ] Make gRPC client
 - [ ] Configure Polly to gRPC
 - [ ] Add metrics to gRPC services (anything)
 
 ## Project setup
- 
+1. protobuf with services/messages innit
+2. Server 
+   1. Create console application
+   ```xml
+      <Project Sdk="Microsoft.NET.Sdk.Web">
+   ```
+   2. Add `Grpc.AspNetCore` nuget package
+   3. Add `service.proto` file to project
+   ```xml
+   <ItemGroup>
+      <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+   </ItemGroup>
+   ```
+   4. Make service `service.cs` realization through `ServiceBase` abstract class
+3. 
+
 ## Theory
 
 ### Pros
@@ -47,8 +62,10 @@ How channel creates:
 1. opens a socket
 2. establishing TCP connection
 3. negotiating TLS (encrypting can be skipped in local group servers)
-4. starting HHTP/2 connection
+4. starting HTTP/2 connection
 5. making the gRPC call
 
 ## Helpful links
 - [gRPC: how we did it](https://youtu.be/y5nLqQPSPBI)
+- [gRPC.io](https://grpc.io/docs/what-is-grpc/introduction/)
+- [Google Language Guide](https://developers.google.com/protocol-buffers/docs/proto3)

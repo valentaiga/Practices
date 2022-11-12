@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option csharp_namespace = "Practices.gRPC.Server";
+
+package books;
+
+service BookRepository {
+  rpc Get (GetBookRequest) returns (Book);
+  rpc Create (CreateBookRequest) returns (Book);
+  rpc Delete (DeleteBookRequest) returns (DeleteBookResponse);
+}
+
+message GetBookRequest {
+  int32 id = 1;
+}
+
+message Book {
+  int32 id = 1;
+  string title = 2;
+  string description = 3;
+  int32 author_id = 4;
+  string author_name = 5;
+}
+
+message CreateBookRequest {
+  string title = 1;
+  string description = 2;
+  int32 author_id = 3;
+}
+
+message DeleteBookRequest {
+  int32 id = 1;
+}
+
+message DeleteBookResponse {
+  bool success = 1;
+}
