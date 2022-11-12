@@ -20,11 +20,38 @@ Models are not splitted to dbo or api becouse this is not a project goal.
 Run the project, Altair UI is on https://localhost:5001/ui/altair  
 Available schemas on right side of a screen.
 
-Supported features:
-
-
 ## Project setup
-Nothing to declare
+1. Create web project
+2. Add necessary GraphQL nuget packages
+```csharp
+<PackageReference Include="GraphQL" Version="7.1.1" />
+<PackageReference Include="GraphQL.MicrosoftDI" Version="7.1.1" />
+<PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="7.1.1" />
+<PackageReference Include="GraphQL.Server.Ui.Altair" Version="7.1.1" />
+<PackageReference Include="GraphQL.SystemTextJson" Version="7.1.1" />
+```
+3. Configure services
+```csharp
+services.AddGraphQL(b => b
+    .AddSystemTextJson()
+    .AddDocumentExecuter<DocumentExecuter>()
+    .AddGraphTypes()
+    .AddSchema<StoreSchema>()
+    .AddComplexityAnalyzer(opt =>
+    {
+#if !DEBUG
+        opt.MaxComplexity = 200;
+#endif
+    })
+);
+```
+4. Configure GraphQL web app (Middleware + UI)
+```csharp
+builder.UseGraphQLAltair();
+builder.UseMiddleware<GraphQLMiddleware>();
+```
+5. Add root Schema, Mutation and Query to project
+6. Schema <= Query/Mutation <= Field (Namespace) <= Type <= GroupType <= Type
 
 ## Theory
 ### GraphQL is a query language for API

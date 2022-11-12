@@ -6,9 +6,10 @@ Pet projects with theory.
 - [x] [FluentMigration](src/Practices.FluentMigration)
 - [x] [PostgreSQL + Dapper ORM](src/Practices.PostgreSQL)
 - [ ] [~~Machine Learning~~](src/Practices.ML.Net) _(Too complicated)_
-- [ ] [gRPC](src/Practices.gRPC)
+- [x] [gRPC](src/Practices.gRPC)
 - [ ] [Polly]()
 - [ ] [XUnit]()
+- [ ] [OpenTelemetry]() // https://opentelemetry.io/docs/instrumentation/net/getting-started/
 - [ ] [Quartz]()
 - [ ] [DataDog metrics]()
 - [ ] [Azure SQL Database]()
