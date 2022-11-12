@@ -19,11 +19,21 @@
    3. Add `service.proto` file to project
    ```xml
    <ItemGroup>
-      <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+      <Protobuf Include="..\Protos\service.proto" GrpcServices="Server" />
    </ItemGroup>
    ```
-   4. Make service `service.cs` realization through `ServiceBase` abstract class
-3. 
+   4. Make service `Service.cs` realization through `ServiceBase` abstract class
+3. Client
+   1. Create console app (or whatever)
+   2. Add `Grpc.AspNetCore` nuget
+   3. Add `service.proto` file to project
+   ```xml
+   <ItemGroup>
+      <Protobuf Include="..\Protos\service.proto" GrpcServices="Client" />
+   </ItemGroup>
+   ```
+   4. Make service `ServiceClient.cs` realization through `ServiceClientBase` abstract class
+   
 
 ## Theory
 

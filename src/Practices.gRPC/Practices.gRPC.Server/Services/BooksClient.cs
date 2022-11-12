@@ -1,9 +1,8 @@
 using Grpc.Core;
-using Microsoft.Extensions.Logging;
 
 namespace Practices.gRPC.Server.Services;
 
-public class BooksService : BookRepository.BookRepositoryBase
+public class BooksClient : BookRepository.BookRepositoryBase
 {
     private static readonly List<Book> Db = new()
     {
@@ -11,9 +10,9 @@ public class BooksService : BookRepository.BookRepositoryBase
         GenBook(1),
         GenBook(3)
     };
-    private readonly ILogger<BooksService> _logger;
+    private readonly ILogger<BooksClient> _logger;
 
-    public BooksService(ILogger<BooksService> logger)
+    public BooksClient(ILogger<BooksClient> logger)
     {
         _logger = logger;
     }

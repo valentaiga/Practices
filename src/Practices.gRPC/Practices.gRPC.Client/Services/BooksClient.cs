@@ -3,21 +3,19 @@ using Practices.gRPC.Server;
 
 namespace Practices.gRPC.Client.Services;
 
-public class BooksWebService : IDisposable
+public class BooksClient : IDisposable
 {
     private readonly GrpcChannel _channel;
     private readonly BookRepository.BookRepositoryClient _client; 
     
-    public BooksWebService()
+    public BooksClient()
     {
         // Grpc.Net.Client.Factory helps with DI client initialization
 #if DEBUG
-        AppContext.SetSwitch(
-            "System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true); // Return `true` to allow certificates that are untrusted/invalid
         var httpHandler = new HttpClientHandler();
         httpHandler.ServerCertificateCustomValidationCallback =
             HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
-        _channel = GrpcChannel.ForAddress("https://127.0.0.1:5054",
+        _channel = GrpcChannel.ForAddress("https://127.0.0.1:57200",
             new GrpcChannelOptions { HttpHandler = httpHandler });
 #else
         _channel = GrpcChannel.ForAddress("https://127.0.0.1:7249");
