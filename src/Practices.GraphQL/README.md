@@ -1,20 +1,19 @@
 # GraphQL
-Project includes GraphQL wrapper over .Net classes.  
-Models are not splitted to dbo or api becouse this is not a project goal.
+GraphQL over .Net classes realization.
 
 ## Goals
 - [x] Build GraphQL project and understand the meaning of mandatory GraphQL over .Net classes
 - [x] Query single book by id parameter
-- [x] Query all books
-- [x] Mutation book create
+- [x] Queries (book and author getById/getAll)
+- [x] Mutations (book and author operations: create/update/delete)
+- [x] Subscription with book's title update event
 - [x] Variables support
 - [x] Organized schema
-- [x] Mutate single book/author (change fields by id)
 - [x] Author's books in model (and book's author)
 - [x] A bit of business logic + graphql exception handler
-- [x] Subscription with book's title update event
+- [ ] GraphQL Client
+- [x] Unit tests
 - [ ] Add DataLoader logic
-- [ ] GraphQL Client based on schema (not necessary but why not)
 
 ## Environment setup
 Run the project, Altair UI is on https://localhost:5001/ui/altair  
