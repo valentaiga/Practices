@@ -1,7 +1,5 @@
 using Microsoft.ML;
 using Microsoft.ML.AutoML;
-using Microsoft.ML.AutoML.CodeGen;
-using Microsoft.ML.Data;
 using Microsoft.ML.Trainers.FastTree;
 using Practices.ML.Net.Abstractions.Models;
 using Practices.ML.Net.Abstractions.Predictor;

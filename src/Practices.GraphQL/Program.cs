@@ -25,7 +25,7 @@ public static class Program
         }
     }
 
-    private static IWebHostBuilder CreateWebHostBuilder(string[] args)
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         => WebHost.CreateDefaultBuilder(args)
             .ConfigureServices(services =>
             {

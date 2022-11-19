@@ -8,7 +8,7 @@ public static class PostgresExtensions
     {
         var settings = new PostgresSettings();
         action(settings);
-        services.AddSingleton<PostgresSettings>(_ => settings);
+        services.AddSingleton(_ => settings);
         services.AddSingleton<IPostgresRepository, PostgresRepository>();
     }
 }

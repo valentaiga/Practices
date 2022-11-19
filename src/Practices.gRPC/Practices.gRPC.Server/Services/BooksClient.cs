@@ -10,12 +10,6 @@ public class BooksClient : BookRepository.BookRepositoryBase
         GenBook(1),
         GenBook(3)
     };
-    private readonly ILogger<BooksClient> _logger;
-
-    public BooksClient(ILogger<BooksClient> logger)
-    {
-        _logger = logger;
-    }
 
     private static Book GenBook(int id)
     {

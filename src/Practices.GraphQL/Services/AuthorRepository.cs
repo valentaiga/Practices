@@ -5,7 +5,7 @@ namespace Practices.GraphQL.Services;
 public class AuthorRepository : IAuthorRepository
 {
     // since its graphQL practice, I simplified logic
-    private static int _lastId = 2;
+    private static int _lastId = 3;
 
     private static readonly List<Author> Storage = new()
     {
