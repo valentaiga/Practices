@@ -1,3 +1,6 @@
+using Practices.GraphQL.Client.Models.Responses.Author;
+using Practices.GraphQL.Client.Models.Responses.Book;
+
 namespace Practices.GraphQL.Tests;
 
 public static class AssertExtensions

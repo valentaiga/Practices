@@ -1,3 +1,5 @@
+using Practices.GraphQL.Client.Models.Responses.Author;
+
 namespace Practices.GraphQL.Tests.UnitTests;
 
 [Collection("GraphQL Collection")]
@@ -87,7 +89,7 @@ public class AuthorApiTests
         var request = new GraphQLHttpRequest(
           query, 
           variables: new { name = name });
-        var response = await _client.SendQueryAsync<AuthorWrap<AuthorCreateResponse>>(request);
+        var response = await _client.SendQueryAsync<AuthorWrap<CreateAuthorResponse>>(request);
 
         Assert.Null(response.Errors);
         var author = response.Data.Author?.Create;
@@ -114,7 +116,7 @@ public class AuthorApiTests
             id = AssertExtensions.ExistingId, 
             name = newName
           });
-        var response = await _client.SendQueryAsync<AuthorWrap<AuthorUpdateResponse>>(request);
+        var response = await _client.SendQueryAsync<AuthorWrap<UpdateAuthorResponse>>(request);
 
         Assert.Null(response.Errors);
         var author = response.Data.Author?.Update;
@@ -133,7 +135,7 @@ public class AuthorApiTests
         var request = new GraphQLHttpRequest(
             query, 
             variables: new { id = AssertExtensions.ExistingIdForDelete });
-        var response = await _client.SendQueryAsync<AuthorWrap<AuthorDeleteResponse>>(request);
+        var response = await _client.SendQueryAsync<AuthorWrap<DeleteAuthorResponse>>(request);
 
         Assert.Null(response.Errors);
         var success = response.Data.Author.Delete;
@@ -151,7 +153,7 @@ public class AuthorApiTests
       var request = new GraphQLHttpRequest(
         query, 
         variables: new { id = AssertExtensions.ExistingIdForDelete });
-      var response = await _client.SendQueryAsync<AuthorWrap<AuthorDeleteResponse>>(request);
+      var response = await _client.SendQueryAsync<AuthorWrap<DeleteAuthorResponse>>(request);
 
       Assert.NotEmpty(response.Errors);
     }

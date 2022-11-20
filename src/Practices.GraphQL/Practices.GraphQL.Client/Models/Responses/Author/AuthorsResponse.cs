@@ -1,4 +1,4 @@
-namespace Practices.GraphQL.Client.Models.Responses;
+namespace Practices.GraphQL.Client.Models.Responses.Author;
 
 public class AuthorsResponse
 {

@@ -1,4 +1,3 @@
-
 namespace Practices.GraphQL.Tests.UnitTests;
 
 [Collection("GraphQL Collection")]

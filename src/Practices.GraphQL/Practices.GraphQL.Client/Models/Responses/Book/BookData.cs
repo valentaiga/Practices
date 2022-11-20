@@ -1,4 +1,6 @@
-namespace Practices.GraphQL.Client.Models.Responses;
+using Practices.GraphQL.Client.Models.Responses.Author;
+
+namespace Practices.GraphQL.Client.Models.Responses.Book;
 
 public class BookData
 {
