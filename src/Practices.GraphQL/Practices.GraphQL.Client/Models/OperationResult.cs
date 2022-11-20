@@ -17,7 +17,7 @@ public class OperationResult<TResult> : OperationResult
 public class OperationResult
 {
     public GraphQLException Error { get; }
-    public bool IsError => Error is null;
+    public bool IsError => Error is not null;
 
     internal OperationResult()
     {

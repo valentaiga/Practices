@@ -1,6 +1,3 @@
-using Practices.GraphQL.Client.Models.Responses.Author;
-using Practices.GraphQL.Client.Models.Responses.Book;
-
 namespace Practices.GraphQL.Tests;
 
 public static class AssertExtensions
@@ -10,21 +7,21 @@ public static class AssertExtensions
     public const int ExistingId = 1;
     public const int ExistingIdForDelete = 2;
     public const int NotExistingId = -1;
-    
+
     public static void EnsureAuthorDtoIsValid(this Author author)
     {
         Assert.NotNull(author.Name);
         Assert.NotEqual(DefaultDt, author.CreatedAt);
         Assert.NotEqual(DefaultInt, author.Id);
     }
-    
-    public static void EnsureAuthorIsValid(this AuthorData author)
+
+    public static void EnsureAuthorIsValid(this AuthorShortData author)
     {
         Assert.NotNull(author.Name);
         Assert.NotEqual(DefaultDt, author.CreatedAt);
         Assert.NotEqual(DefaultInt, author.Id);
     }
-    
+
     public static void EnsureBookIsValid(this BookData book)
     {
         Assert.NotNull(book.Title);

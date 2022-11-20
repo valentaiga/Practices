@@ -1,12 +1,11 @@
-using Practices.GraphQL.Client.Models.Responses.Author;
-
 namespace Practices.GraphQL.Tests.UnitTests;
 
 [Collection("GraphQL Collection")]
-public class AuthorApiTests
+public class AuthorGraphQLApiTests
 {
     private readonly GraphQLHttpClient _client;
-    public AuthorApiTests(GraphQLFixture fixture)
+
+    public AuthorGraphQLApiTests(GraphQLFixture fixture)
     {
         _client = fixture.CreateGraphQLClient();
     }
@@ -152,7 +151,7 @@ public class AuthorApiTests
 }";
       var request = new GraphQLHttpRequest(
         query, 
-        variables: new { id = AssertExtensions.ExistingIdForDelete });
+        variables: new { id = AssertExtensions.NotExistingId });
       var response = await _client.SendQueryAsync<AuthorWrap<DeleteAuthorResponse>>(request);
 
       Assert.NotEmpty(response.Errors);

@@ -32,18 +32,18 @@ public class GraphQLWebClient : GraphQLWebClientBase, IAuthorWebClient
             (AuthorWrap<DeleteAuthorResponse> response) => response.Author.Delete,
             ct);
     
-    public async Task CreateAuthor(CreateAuthorRequest request, CancellationToken ct = default) =>
+    public async Task<AuthorShortData> CreateAuthor(CreateAuthorRequest request, CancellationToken ct = default) =>
         await Query(
             AuthorQueries.Create,
             request,
-            (AuthorWrap<DeleteAuthorResponse> response) => response.Author.Delete,
+            (AuthorWrap<CreateAuthorResponse> response) => response.Author.Create,
             ct);
 
-    public async Task UpdateAuthor(UpdateAuthorRequest request, CancellationToken ct = default) =>
+    public async Task<AuthorData> UpdateAuthor(UpdateAuthorRequest request, CancellationToken ct = default) =>
         await Query(
             AuthorQueries.Update,
             request,
-            (AuthorWrap<DeleteAuthorResponse> response) => response.Author.Delete,
+            (AuthorWrap<UpdateAuthorResponse> response) => response.Author.Update,
             ct);
 
     private async Task<TData> Query<TResponseType, TData>(
@@ -70,6 +70,6 @@ public interface IAuthorWebClient
     Task<AuthorData> GetAuthor(int id, CancellationToken ct = default);
     Task<ICollection<AuthorData>> GetAllAuthors(CancellationToken ct = default);
     Task DeleteAuthor(int id, CancellationToken ct = default);
-    Task CreateAuthor(CreateAuthorRequest request, CancellationToken ct = default);
-    Task UpdateAuthor(UpdateAuthorRequest request, CancellationToken ct = default);
+    Task<AuthorShortData> CreateAuthor(CreateAuthorRequest request, CancellationToken ct = default);
+    Task<AuthorData> UpdateAuthor(UpdateAuthorRequest request, CancellationToken ct = default);
 }

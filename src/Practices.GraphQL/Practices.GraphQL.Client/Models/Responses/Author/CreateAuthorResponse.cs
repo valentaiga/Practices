@@ -2,5 +2,5 @@ namespace Practices.GraphQL.Client.Models.Responses.Author;
 
 public class CreateAuthorResponse
 {
-    public AuthorData Create { get; set; }
+    public AuthorShortData Create { get; set; }
 }

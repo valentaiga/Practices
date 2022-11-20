@@ -50,6 +50,12 @@ public static class AuthorQueries
       id
       name
       createdAt
+      books {
+        id
+        description
+        title
+        createdAt
+      }
     }
   }
 }";

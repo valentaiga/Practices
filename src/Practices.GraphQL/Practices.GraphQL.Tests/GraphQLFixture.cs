@@ -8,11 +8,22 @@ public class GraphQLFixture : IDisposable
 
     public GraphQLFixture()
     {
-        _server = new TestServer(Program.CreateWebHostBuilder(new string[] { }));
+        var builder = Program.CreateWebHostBuilder(new string[] { })
+            .ConfigureServices(services =>
+            {
+                services.AddScoped<IAuthorWebClient>(
+                    _ => new GraphQLWebClient(
+                        Path.Combine(_server.BaseAddress.AbsoluteUri, "graphql"), 
+                        _server.CreateClient()));
+            });
+        _server = new TestServer(builder);
     }
 
-    public TRequiredServer GetRequiredServer<TRequiredServer>() where TRequiredServer : notnull
-        => _server.Services.GetRequiredService<TRequiredServer>();
+    public TRequiredServer GetRequiredServer<TRequiredServer>() where TRequiredServer : notnull =>
+        _server.Services.GetRequiredService<TRequiredServer>();
+
+    public IAuthorWebClient GetAuthorWebClient() =>
+        null;
 
     public GraphQLHttpClient CreateGraphQLClient()
     {
