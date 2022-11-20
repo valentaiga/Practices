@@ -8,7 +8,7 @@ Pet projects with theory.
 - [ ] [~~Machine Learning~~](src/Practices.ML.Net) _(complex theory learning required)_
 - [x] [gRPC](src/Practices.gRPC)
 - [ ] [Polly]()
-- [ ] [XUnit]()
+- [x] [XUnit](src/Practices.GraphQL/Practices.GraphQL.Tests)
 - [ ] [OpenTelemetry]() // https://opentelemetry.io/docs/instrumentation/net/getting-started/
 - [ ] [Quartz]()
 - [ ] [DataDog metrics]()

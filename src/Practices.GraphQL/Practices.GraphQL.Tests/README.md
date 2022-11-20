@@ -1,7 +1,7 @@
 # Xunit
 
 ## Goals
-- [ ] Implement unit tests with high code coverage percent
+- [x] Implement unit tests with high code coverage percent
 
 ## Theory
 ### Fact

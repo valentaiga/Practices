@@ -11,7 +11,7 @@ GraphQL over .Net classes realization.
 - [x] Organized schema
 - [x] Author's books in model (and book's author)
 - [x] A bit of business logic + graphql exception handler
-- [ ] GraphQL Client
+- [x] GraphQL Client
 - [x] Unit tests
 - [ ] Add DataLoader logic
 
@@ -51,6 +51,16 @@ builder.UseMiddleware<GraphQLMiddleware>();
 ```
 5. Add root Schema, Mutation and Query to project
 6. Schema <= Query/Mutation <= Field (Namespace) <= Type <= GroupType <= Type
+
+## GraphQL client setup
+1. Create library project
+2. Add required nuget packages for GraphQL client project
+      ```xml
+   <PackageReference Include="GraphQL.Client" Version="5.1.0" />
+   <PackageReference Include="GraphQL.Client.Serializer.SystemTextJson" Version="5.1.0" />
+   <PackageReference Include="GraphQL.SystemTextJson" Version="7.1.1" />
+   ```
+3. Implement GraphQL client by `GraphQLHttpClient` (look at `GraphQLWebClientBase.cs`)
 
 ## Theory
 ### GraphQL is a query language for API
