@@ -14,6 +14,7 @@ Pet projects with theory.
 - [ ] [DataDog metrics]()
 - [ ] [Azure SQL Database]()
 - [ ] [MiniProfiler]()
+- [ ] [AutoMapper]()
  
 ## Theory
 - [x] [.NET under the hood](docs/dotnet.md)
@@ -23,6 +24,7 @@ Pet projects with theory.
 - [ ] [JWT]()
 - [ ] [API design patterns]()
 - [ ] [Microservices patterns]() // vod: https://www.youtube.com/watch?v=FF-GZ7iipwc
+- [x] [Reactive Extensions .NET](docs/rx.md)
 - [ ] [K6 Stress testing]() // vod: https://youtu.be/iu6X4QNgFig?list=LL
 - [ ] [k8s]()
 - [ ] [DDD](docs/DDD.md)
