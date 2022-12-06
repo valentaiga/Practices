@@ -14,18 +14,19 @@ Pet projects with theory.
 - [ ] [DataDog metrics]()
 - [ ] [Azure SQL Database]()
 - [ ] [MiniProfiler]()
-- [ ] [AutoMapper]()
+- [ ] ~~AutoMapper~~ _(Mapster is better for 'just mapping' purpose)_
+- [ ] [Mapster]()
  
 ## Theory
 - [x] [.NET under the hood](docs/dotnet.md)
 - [x] [Mediator .Net](docs/mediator.md)
-- [x] [Apache Kafka](docs/Kafka.md)
-- [x] [GoF](docs/patterns.md) & [SOLID](docs/patterns.md#SOLID)
+- [x] [Apache Kafka](docs/apache_kafka.md)
+- [x] [GoF](docs/patterns.md) & [SOLID](docs/patterns.md#solid)
 - [ ] [JWT]()
 - [ ] [API design patterns]()
 - [ ] [Microservices patterns]() // vod: https://www.youtube.com/watch?v=FF-GZ7iipwc
 - [x] [Reactive Extensions .NET](docs/rx.md)
 - [ ] [K6 Stress testing]() // vod: https://youtu.be/iu6X4QNgFig?list=LL
 - [ ] [k8s]()
-- [ ] [DDD](docs/DDD.md)
+- [ ] [DDD](docs/ddd.md)
 - [ ] [TDD]()
