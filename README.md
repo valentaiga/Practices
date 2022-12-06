@@ -23,7 +23,7 @@ Pet projects with theory.
 - [x] [Apache Kafka](docs/apache_kafka.md)
 - [x] [GoF](docs/patterns.md) & [SOLID](docs/patterns.md#solid)
 - [ ] [JWT]()
-- [ ] [API design patterns]()
+- [x] [API design patterns](docs/api_patterns.md)
 - [ ] [Microservices patterns]() // vod: https://www.youtube.com/watch?v=FF-GZ7iipwc
 - [x] [Reactive Extensions .NET](docs/rx.md)
 - [ ] [K6 Stress testing]() // vod: https://youtu.be/iu6X4QNgFig?list=LL
