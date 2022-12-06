@@ -7,6 +7,7 @@ Pet projects with theory.
 - [x] [PostgreSQL + Dapper ORM](src/Practices.PostgreSQL)
 - [ ] [~~Machine Learning~~](src/Practices.ML.Net) _(complex theory learning required)_
 - [x] [gRPC](src/Practices.gRPC)
+- [x] [Azure Event Hub](src/Practices.AzureEventHub)
 - [ ] [Polly]()
 - [x] [XUnit](src/Practices.GraphQL/Practices.GraphQL.Tests)
 - [ ] [OpenTelemetry]() // https://opentelemetry.io/docs/instrumentation/net/getting-started/
@@ -25,7 +26,6 @@ Pet projects with theory.
 - [ ] [JWT]()
 - [x] [API design patterns](docs/api_patterns.md)
 - [ ] [Microservices patterns]() // vod: https://www.youtube.com/watch?v=FF-GZ7iipwc
-- [ ] [Azure Event Hub](docs/azure_event_hub.md)
 - [x] [Reactive Extensions .NET](docs/rx.md)
 - [ ] [K6 Stress testing]() // vod: https://youtu.be/iu6X4QNgFig?list=LL
 - [ ] [k8s]()
