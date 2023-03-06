@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practices.AzureEventHub.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practices.AzureEventHub.Common", "src\Practices.AzureEventHub\Practices.AzureEventHub.Common\Practices.AzureEventHub.Common.csproj", "{D496E957-0262-46C9-8149-714092B4897F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilesProcessor", "src\TestTasks\file-listener-with-grpc\FilesProcessor\FilesProcessor.csproj", "{43D5A018-2EA2-4D4F-A79A-5BA319C69F4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,6 +108,10 @@ Global
 		{D496E957-0262-46C9-8149-714092B4897F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D496E957-0262-46C9-8149-714092B4897F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D496E957-0262-46C9-8149-714092B4897F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43D5A018-2EA2-4D4F-A79A-5BA319C69F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43D5A018-2EA2-4D4F-A79A-5BA319C69F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43D5A018-2EA2-4D4F-A79A-5BA319C69F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43D5A018-2EA2-4D4F-A79A-5BA319C69F4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

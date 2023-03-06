@@ -1,22 +1,31 @@
 # Home practices
 Pet projects with theory.
 
+## Projects
+- [GraphQL API](https://github.com/valentaiga/GraphQL-trial)
+  - [x] GraphQL Server
+  - [x] GrahpQL Client
+  - [x] XUnit (unit + integration tests)
+- [PubSub messaging with Redis in .NET Core 7](https://github.com/valentaiga/redis-pubsub-trial)
+  - [x] Two distributed workers connected to redis
+  - [x] Opentelemetry tracing with Jaeger export
+- [WebAPI in .NET Core 6](https://github.com/valentaiga/book-market)
+  - [x] Web API with FluentValidation
+  - [x] MediatR (Command Query Responsibility Segregation)
+  - [x] PosgreSQL (Dapper ORM + FluentMigration)
+  - [x] Mapster mapping
+  - [x] XUnit (unit + integration tests)
+
 ## Technologies:
-- [x] [GraphQL Server](src/Practices.GraphQL)
-- [x] [FluentMigration](src/Practices.FluentMigration)
-- [x] [PostgreSQL + Dapper ORM](src/Practices.PostgreSQL)
-- [ ] [~~Machine Learning~~](src/Practices.ML.Net) _(complex theory learning required)_
-- [x] [gRPC](src/Practices.gRPC)
 - [x] [Azure Event Hub](src/Practices.AzureEventHub)
+- [x] [gRPC](src/Practices.gRPC)
 - [ ] [Polly]()
-- [x] [XUnit](src/Practices.GraphQL/Practices.GraphQL.Tests)
-- [ ] [OpenTelemetry]() // https://opentelemetry.io/docs/instrumentation/net/getting-started/
-- [ ] [Quartz]()
 - [ ] [DataDog metrics]()
 - [ ] [Azure SQL Database]()
 - [ ] [MiniProfiler]()
+- [ ] [~~Machine Learning~~](src/Practices.ML.Net) _(complex theory learning required)_
 - [ ] ~~AutoMapper~~ _(Mapster is better for 'just mapping' purpose)_
-- [ ] [Mapster]()
+- [ ] ~~Quartz~~ _(just theory, nothing interesting)_
  
 ## Theory
 - [x] [.NET under the hood](docs/dotnet.md)
@@ -31,3 +40,4 @@ Pet projects with theory.
 - [ ] [k8s]()
 - [ ] [DDD](docs/ddd.md)
 - [ ] [TDD]()
+- [ ] [EDD]()
